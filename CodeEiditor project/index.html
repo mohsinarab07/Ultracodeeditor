@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeEiditor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    
+    <div class="leftpart">
+        <div class="content">
+          
+            <label>
+                <i class="fa-brands fa-html5"></i>
+                HTML 
+                
+            </label>
+            <textarea></textarea>
+        </div>
+
+        <div class="content">
+            
+            <label>
+                <i class="fa-brands fa-css3-alt"></i>
+                CSS
+                
+                
+            </label>
+            <textarea></textarea>
+        </div>
+
+        <div class="content">
+            
+            <label>
+                <i class="fa-brands fa-js"> </i>
+                JAVASCRIPT
+               
+                
+            </label>
+            <textarea></textarea>
+        </div>
+
+    </div>
+
+
+    <div class="rightpart">
+        <label>Output
+          
+        </label>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fa-brands fa-web-awesome"></i>
+                CodeEditor</div>
+            <ul class="nav-links">
+              <li><a href="help.html">Tools</a></li>
+              
+              <li><a href="https://developer.mozilla.org/en-US/">Docs </a></li>
+              <li><a href="help.html">Help</a></li>
+            </ul>
+          </nav>
+        <iframe id="output"></iframe>
+    </div> 
+
+    <footer>
+        <p># 2024 Code Editor. All rights reserved.</p>
+    </footer>
+
+    
+ <script >
+
+    let output=document.querySelector("#output");
+
+   
+
+   let allInput=document.querySelectorAll(".leftpart textarea")
+   
+
+   let htmlCode,cssCode,jsCode = '';
+   allInput.forEach((el, index)=>{
+    el.addEventListener("keyup" , ()=>{
+        if(index==0){
+            htmlCode=el.value;
+        }
+        if(index==1){
+            cssCode=el.value;
+        }
+        if(index==2){
+            jsCode=el.value;
+        }
+
+         output.contentDocument.body.innerHTML= htmlCode;
+
+         output.contentDocument.head.innerHTML=`<style>${cssCode}</style>`;
+         output.contentWindow.eval(jsCode);
+    })
+   })
+
+ </script>
+ 
+</body>
+</html>
